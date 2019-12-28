@@ -6,10 +6,12 @@ EXPOSE 9000
 #install utilities
 RUN apk add --no-cache curl
 
-COPY build/libs/LinkShare*.jar /usr/local/appPath/LinkShare.jar
-COPY docker/startup.sh /startup.sh
+ARG APP_ENV
 
 WORKDIR /usr/local/appPath
 
-CMD ["/startup.sh"]
+COPY target/CreditApp-*.jar app.jar
+COPY src/main/resources/$APP_ENV/application.yaml application.yaml
+
+CMD ["java", "-jar", "app.jar", "server", "application.yaml"]
 
