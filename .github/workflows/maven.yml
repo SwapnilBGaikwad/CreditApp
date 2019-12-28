@@ -15,8 +15,8 @@ jobs:
           java-version: 1.8
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - uses: mr-smithers-excellent/docker-build-push@v1.0
       - name: Create and push image to GCP
+        uses: mr-smithers-excellent/docker-build-push@v1.0
         with:
           image: gcr.io/upbeat-handler-263217/credit
           registry: gcr.io
