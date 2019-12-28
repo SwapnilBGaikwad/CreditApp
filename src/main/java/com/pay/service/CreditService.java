@@ -18,6 +18,10 @@ public class CreditService {
     }
 
     public Bill getTotal() {
-        return new Bill(creditList.stream().mapToDouble(Credit::getAmount).sum());
+        double total = 0;
+        for (Credit credit : creditList) {
+            total += credit.getAmount();
+        }
+        return new Bill(total);
     }
 }
