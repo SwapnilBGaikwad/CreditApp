@@ -5,3 +5,15 @@ server:
   adminConnectors:
     - type: http
       port: 9001
+
+logging:
+  level: INFO
+  appenders:
+    - type: file
+      currentLogFilename: /var/log/app.log
+      archive: true
+      archivedLogFilenamePattern: /var/log/app-%i.log.gz
+      archivedFileCount: 1
+      maxFileSize: 1MB
+      timeZone: IST
+      logFormat: "%date %level [%thread] %logger{10} [%X{id}] %msg%n\n"
