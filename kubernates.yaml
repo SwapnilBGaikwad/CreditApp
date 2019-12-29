@@ -14,7 +14,7 @@ metadata:
   uid: 12ea0036-2933-11ea-adc4-42010a800229
 spec:
   progressDeadlineSeconds: 600
-  replicas: 2
+  replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
