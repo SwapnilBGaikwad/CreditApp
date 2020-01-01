@@ -3,6 +3,9 @@ package com.pay.service;
 import com.pay.model.Spend;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static org.junit.Assert.assertEquals;
 
 public class SmsParserTest {
@@ -14,7 +17,12 @@ public class SmsParserTest {
         Spend spend = parser.getSpend(content);
         assertEquals(244, spend.getAmount().intValue());
         assertEquals("XX8002", spend.getCardNumber());
-        assertEquals("Sat Nov 30 00:00:00 IST 2019", spend.getDate().toString());
+        assertEquals("30-Nov-19", getDate(spend.getDate()));
         assertEquals("AJFAN DATES AND", spend.getReason());
+    }
+
+    private String getDate(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MMM-yy");
+        return format.format(date);
     }
 }
