@@ -15,7 +15,7 @@ spec:
         app: credit-api
     spec:
       containers:
-        - image: gcr.io/upbeat-handler-263217/credit:latest
+        - image: gcr.io/app-cluster-263807/credit:latest
           name: credit
           imagePullPolicy: Always
           livenessProbe:

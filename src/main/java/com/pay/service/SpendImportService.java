@@ -1,6 +1,8 @@
 package com.pay.service;
 
+import com.google.inject.Inject;
 import com.pay.model.Bill;
+import com.pay.model.Message;
 import com.pay.model.Spend;
 
 import java.util.LinkedList;
@@ -8,13 +10,16 @@ import java.util.List;
 
 public class SpendImportService {
     private List<Spend> spendList;
+    private SmsParser parser;
 
-    public SpendImportService() {
+    @Inject
+    public SpendImportService(SmsParser parser) {
+        this.parser = parser;
         this.spendList = new LinkedList<>();
     }
 
-    public void add(Spend spendRecord) {
-        spendList.add(spendRecord);
+    public void add(Message message) {
+        spendList.add(parser.getSpend(message.getContent()));
     }
 
     public Bill getTotal() {

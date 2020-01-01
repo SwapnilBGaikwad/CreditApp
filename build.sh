@@ -4,4 +4,4 @@ if [ -z "$PROJECT_ID" ]; then
 fi
 
 
-docker build -t gcr.io/$PROJECT_ID/spend .
+docker build -t gcr.io/$PROJECT_ID/message .
