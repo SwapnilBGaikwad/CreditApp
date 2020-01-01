@@ -2,8 +2,8 @@ package com.pay.resource;
 
 import com.google.inject.Inject;
 import com.pay.model.Bill;
-import com.pay.model.Credit;
-import com.pay.service.CreditService;
+import com.pay.model.Spend;
+import com.pay.service.SpendImportService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -14,21 +14,21 @@ import javax.ws.rs.core.MediaType;
 @Path("/credit")
 @Produces(MediaType.APPLICATION_JSON)
 public class ImportResource {
-    private CreditService service;
+    private SpendImportService service;
 
     @Inject
-    public ImportResource(CreditService service) {
+    public ImportResource(SpendImportService service) {
         this.service = service;
     }
 
     @POST
-    public Credit addStudent(Credit credit) {
-        service.add(credit);
-        return credit;
+    public Spend add(Spend spend) {
+        service.add(spend);
+        return spend;
     }
 
     @GET()
-    public Bill getBillDetails() {
+    public Bill getBillingDetails() {
         return service.getTotal();
     }
 }

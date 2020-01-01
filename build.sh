@@ -1,6 +1,7 @@
-if [ -z "$1" ]; then
-  echo 1>&2 "$0: not enough arguments"
+if [ -z "$PROJECT_ID" ]; then
+  echo 1>&2 "$0: App ID is missing"
   exit 1
 fi
 
-docker build -t gcr.io/upbeat-handler-263217/credit --build-arg APP_ENV=$1 .
+
+docker build -t gcr.io/$PROJECT_ID/spend .
