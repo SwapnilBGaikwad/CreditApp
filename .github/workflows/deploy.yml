@@ -22,7 +22,7 @@ jobs:
       - name: Create and push image to GCP
         uses: mr-smithers-excellent/docker-build-push@v1.0
         with:
-          image: upbeat-handler-263217/credit
+          image: ${{ secrets.APP_ID  }}/credit
           tag: latest
           registry: gcr.io
           username: _json_key
